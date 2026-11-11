@@ -1,63 +1,65 @@
 # ml-sessions-intent
 
-ML session intents & experiment tracking template.
+ML session intents & structured wants.
 
-Derived from [kaggle-bqml-core](https://github.com/bonsai/kaggle-bqml-core).
-
-**Purpose**: session logs → structured ML intents → runnable experiments / artifacts.
-
-**Author note**: Scaffold by Grok (xAI) — 2026-11-11
+**Author note**: Scaffold + first structured extraction by Grok (xAI) — 2026-11-11
 
 ---
 
-## Idea
+## Two layers
 
-1. Sessions produce *intents* (what we want to learn / build)
-2. Intents are captured as YAML (machine-readable)
-3. Each intent can spawn a small experiment (notebook / script)
-4. Results and decisions feed back into the next session
+| Layer | Path | Role |
+|-------|------|------|
+| **Intent** | `intents/` | Experiment-sized unit (goal → next_action → artifacts) |
+| **Want** | `wants/` | Session-extracted やりたいこと with **濃さ / 関連 / 依存 / 学習** |
 
-This repo is the shared skeleton for that loop.
+Want が先にあり、そこから Intent に落とす、という流れを想定。
+
+---
+
+## Want の構造
+
+```yaml
+id: W-...
+title: ...
+intensity: 0.0–1.0   # 濃さ
+cluster: agents | ml-data | meta-process | ...
+related: [...]       # 関連
+depends_on: [...]    # 依存（これより先に進めるもの）
+enables: [...]       # これが進むと開けるもの
+learning: |          # この want から見たパターン・教訓
+  ...
+```
+
+---
+
+## 今日の抽出サマリー (2026-11-11 Grok)
+
+| ID | Title | 濃さ |
+|----|-------|------|
+| W-20261111-06 | やりたいことを構造化（濃さ・関連・依存・学習） | 0.95 |
+| W-20261111-02 | Kaggleで実践MLを始めたい | 0.90 |
+| W-20261111-01 | Muse系エージェント全体像 | 0.85 |
+| W-20261111-03 | BQMLをKaggleで再現 | 0.80 |
+| W-20261111-04 | 共通基盤テンプレをrepo化 | 0.75 (done) |
+| W-20261111-05 | セッション構造化・過去intent救出 | 0.70 |
+
+学習で見えた型:
+- structure-before-execution
+- free-compute-first
+- agent-router-as-backbone
+- session-as-memory
+
+詳細: `wants/2026-11-11-grok.yaml`
 
 ---
 
 ## Layout
 
 ```
-.
-├── README.md
-├── pyproject.toml
-├── schema/
-│   └── intent.yaml          # intent schema
-├── intents/                 # one YAML per intent
-│   └── .gitkeep
-├── sessions/                # optional session summaries (links)
-│   └── .gitkeep
-├── notebooks/
-│   └── 01_intent_to_baseline.ipynb
-├── src/ml_sessions_intent/
-│   ├── schema.py
-│   ├── intent.py            # load / validate intents
-│   └── io.py
-├── tests/
-└── .github/workflows/ci.yml
+intents/          # experiment units
+wants/            # per-session structured やりたいこと
+schema/
+src/ml_sessions_intent/
+notebooks/
 ```
-
----
-
-## Quick start
-
-1. Copy an intent template into `intents/`
-2. Fill `goal`, `source_session`, `status`, `next_action`
-3. Point a notebook at it and run a minimal baseline
-4. Update the intent YAML with results / decisions
-
----
-
-## Relation to other repos
-
-| Repo | Role |
-|------|------|
-| `bonsai/workspace` | Session logs & kanban (source of intents) |
-| `bonsai/kaggle-bqml-core` | Shared data/feature foundation for BQML-style work |
-| `bonsai/ml-sessions-intent` | **This repo** — intent capture + experiment loop |

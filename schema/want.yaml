@@ -1,0 +1,39 @@
+# Schema for structured "やりたいこと" extracted per session
+version: 0.1.0
+
+want:
+  required: [id, session, title, intensity]
+  properties:
+    id:
+      type: string
+    session:
+      type: string
+      description: session id or date key (e.g. 2026-11-11-grok)
+    title:
+      type: string
+    intensity:
+      type: number
+      description: 濃さ 0.0–1.0 (how strongly it showed up / how core it is)
+      minimum: 0
+      maximum: 1
+    status:
+      type: string
+      enum: [latent, stated, active, parked, done]
+    cluster:
+      type: string
+      description: thematic cluster (agents, ml-data, visual, local-life, ...)
+    related:
+      type: string[]
+      description: other want ids or KB ids
+    depends_on:
+      type: string[]
+      description: must-progress-before relations
+    enables:
+      type: string[]
+      description: what this unblocks
+    learning:
+      type: string
+      description: pattern or lesson drawn from this want across sessions
+    source:
+      type: string
+      description: quote or pointer into session log

@@ -1,0 +1,96 @@
+# Wants extracted from 2026-11-11 Grok session
+# Structured with intensity (濃さ), related, depends_on, learning
+
+session: 2026-11-11-grok
+extracted_by: Grok (xAI)
+extracted_at: 2026-11-11
+
+wants:
+  - id: W-20261111-01
+    title: Muse系個人AIエージェントの全体像を把握したい
+    intensity: 0.85
+    status: stated
+    cluster: agents
+    related: [KB-001, KB-008, W-20261111-02]
+    depends_on: []
+    enables: [W-20261111-02, W-20261111-05]
+    learning: >
+      「単体エージェント」より「役割分担して回すルーター」への関心が
+      過去P0クラスタ（KB-001系）と強く一致する。質問の裏に設計意図がある。
+    source: metaのmuseみたいなのってmanus以外にもあるのかなdots botとかか
+
+  - id: W-20261111-02
+    title: Kaggleで実践的なMLを始めたい（現状に合うもの）
+    intensity: 0.9
+    status: active
+    cluster: ml-data
+    related: [KB-009, KB-057, W-20261111-03, W-20261111-04]
+    depends_on: []
+    enables: [W-20261111-03]
+    learning: >
+      無料コンピュート優先（KB-057）とGHメタデータ分析（KB-009）が
+      同じセッションで自然に接続された。学習環境と本番意図が同居している。
+    source: kaggleで何をｍｌすべきかな　今の私の状況　セッションから分析して
+
+  - id: W-20261111-03
+    title: BQMLをKaggle上で小さく再現したい
+    intensity: 0.8
+    status: active
+    cluster: ml-data
+    related: [KB-009, KB-010, INTENT-2026-11-11-01]
+    depends_on: [W-20261111-02]
+    enables: [W-past-kb009-full]
+    learning: >
+      「本番BQML」より先に「Kaggleで概念再現」を置く判断が出た。
+      過去の無料枠優先パターンと一致。段階的学習の型。
+    source: bqmlしたいです kaggleで再現します
+
+  - id: W-20261111-04
+    title: 共通基盤テンプレをリポジトリとして切り出したい
+    intensity: 0.75
+    status: done
+    cluster: ml-data
+    related: [W-20261111-03, bonsai/kaggle-bqml-core, bonsai/ml-sessions-intent]
+    depends_on: [W-20261111-03]
+    enables: [W-20261111-06]
+    learning: >
+      実験の前に「置き場とスキーマ」を先に作る傾向が強い。
+      実行より構造化が先に来るスタイル。
+    source: bonsai/kaggle-bqml-coreとして共通基盤だけ実装しよう template
+
+  - id: W-20261111-05
+    title: セッションを構造化して残し、過去intentも救出したい
+    intensity: 0.7
+    status: active
+    cluster: meta-process
+    related: [W-20261111-01, W-20261111-06, sessions/grok]
+    depends_on: []
+    enables: [W-20261111-06]
+    learning: >
+      会話そのものより「後から辿れる形」への欲求が繰り返し出る。
+      エージェント構想（記憶・引き継ぎ）と自己の作業習慣が同型。
+    source: セッションを整理して保存 / 過去のintentも救い出して
+
+  - id: W-20261111-06
+    title: やりたいことをセッションごとに拾い、濃さ・関連・依存まで構造化したい
+    intensity: 0.95
+    status: active
+    cluster: meta-process
+    related: [W-20261111-05, ml-sessions-intent]
+    depends_on: [W-20261111-05]
+    enables: []
+    learning: >
+      これがメタ要求。構造化自体を学習ループに載せたい、という宣言。
+      以降のセッションでは「濃さ・関連・依存」を標準フィールドにする根拠になる。
+    source: やりたいことを各セッションごとにひろって、濃さと関連と依存まで構造化を学習もつかってほしいねん
+
+# Cross-session learning notes (this extraction)
+learning_notes:
+  - pattern: structure-before-execution
+    description: 実行より先にリポジトリ・スキーマ・YAMLを置く傾向が強い
+  - pattern: free-compute-first
+    description: Kaggle/Colabなど無料枠で概念を固めてから本番に進む
+  - pattern: agent-router-as-backbone
+    description: 単体ツールより「役割分担したエージェント群」への関心がP0級で持続
+  - pattern: session-as-memory
+    description: 会話を正本にせず、sessions/ と intent/want YAML を正本にしたがる
