@@ -11,7 +11,7 @@ from pathlib import Path
 
 from ml_sessions_intent.extract_intents import flatten as flatten_intents
 from ml_sessions_intent.extract_wants import flatten as flatten_wants
-from ml_sessions_intent.db import register_all, DEFAULT_DB
+from ml_sessions_intent.db import register_all, emit_files, DEFAULT_DB
 import json
 
 
@@ -44,8 +44,11 @@ def main() -> int:
         print(f"sessions: {len(sessions)} -> bronze/sessions.jsonl")
 
     stats = register_all()
-    print(f"db: {stats}")
-    print(f"canonical db path: {DEFAULT_DB}")
+    print(f"db (processing engine): {stats}")
+
+    files = emit_files()
+    print(f"canonical files: {files}")
+    print(f"canonical dir: {DEFAULT_DB.parent}")
     return 0
 
 

@@ -1,7 +1,7 @@
 data/raw/*
 !data/raw/.gitkeep
-data/canonical/*.db
-data/canonical/*.db-journal
+data/canonical/*
+!data/canonical/.gitkeep
 __pycache__/
 *.py[cod]
 .venv/

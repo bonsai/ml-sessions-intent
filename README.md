@@ -1,6 +1,6 @@
 # ml-sessions-intent
 
-Session → Want → Intent → SQLite の薄いハブ。
+Session → Want → Intent の薄いハブ（正は YAML + JSON/CSV、SQLite は処理エンジン）。
 
 **Pipeline**: [docs/pipeline.md](./docs/pipeline.md)  
 **Tasks**: [TASKS.md](./TASKS.md)
@@ -12,7 +12,7 @@ Session → Want → Intent → SQLite の薄いハブ。
 ```bash
 pip install -e ".[dev]"
 python -m ml_sessions_intent.pipeline
-# → data/bronze/*.jsonl + data/canonical/ml_sessions.db
+# → data/bronze/*.jsonl + data/canonical/*.json + *.csv (+ ml_sessions.db)
 ```
 
 ```bash
@@ -28,7 +28,8 @@ python -m ml_sessions_intent.pipeline --sessions-dir ../workspace/sessions
 | Want YAML | `wants/` | セッションから拾ったやりたいこと |
 | Intent YAML | `intents/` | 実験単位 |
 | Bronze | `data/bronze/` | JSONL（EDA） |
-| Canonical DB | `data/canonical/ml_sessions.db` | SQLite（gitignore） |
+| Canonical | `data/canonical/*.json` + `*.csv` | 正の集約（id で冪等 upsert、gitignore） |
+| Engine DB | `data/canonical/ml_sessions.db` | SQLite（処理エンジン、再生成可、gitignore） |
 
 ---
 
@@ -36,7 +37,7 @@ python -m ml_sessions_intent.pipeline --sessions-dir ../workspace/sessions
 
 | ID | Title | Status |
 |----|-------|--------|
-| INTENT-04 | Session→Intent 自動化 + DB | **doing** |
+| INTENT-04 | Session→Intent 自動化 + 登録 | **done** |
 | INTENT-02 | ml-repos-analyze 移植 | doing |
-| INTENT-01 | BQML GH metadata baseline | planned |
+| INTENT-01 | GH metadata baseline | planned |
 | INTENT-03 | Session-wants baseline | planned |
