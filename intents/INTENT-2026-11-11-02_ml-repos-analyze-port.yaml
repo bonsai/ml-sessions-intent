@@ -1,0 +1,33 @@
+id: INTENT-2026-11-11-02
+title: ml-repos-analyze への計算コア移植を完了・運用する
+goal: >
+  repos-analyze の BQML health / cluster ロジックを
+  ml-repos-analyze（Kaggle-first）に移植し、bronze JSONL で回せる状態を維持する。
+  本番 BQML は repos-analyze に残し、持ち運び可能なコアは ml-repos-analyze を正とする。
+status: doing
+priority: P1
+source_session: bonsai/workspace/sessions/grok/2026-11-11_bqml-kaggle-next-work.md
+related_kb:
+  - KB-009
+  - KB-057
+related_wants:
+  - W-20261111-03
+  - W-20261111-04
+related_repos:
+  - bonsai/repos-analyze
+  - bonsai/ml-repos-analyze
+  - bonsai/kaggle-bqml-core
+next_action: >
+  1. repos-analyze の data/repositories.jsonl（または snapshot）から最小 bronze を切る
+  2. ml-repos-analyze の notebooks/01_kaggle_health_cluster.ipynb で実データ実行
+  3. 結果の overall / status / layer / cluster_id を目視確認
+  4. 必要なら health.py の欠損カラム扱いを調整
+artifacts:
+  - https://github.com/bonsai/ml-repos-analyze
+  - ml-repos-analyze/src/ml_repos_analyze/health.py
+  - ml-repos-analyze/src/ml_repos_analyze/cluster.py
+  - ml-repos-analyze/notebooks/01_kaggle_health_cluster.ipynb
+notes: >
+  GitHub API ではリネーム不可のため、repos-analyze は観測・行動ハブとして残し、
+  ML コアを ml-repos-analyze に切り出した。UI リネームは任意。
+  テンプレは kaggle-bqml-core の bronze / schema / CI パターンを踏襲。
