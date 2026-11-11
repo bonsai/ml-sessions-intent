@@ -1,0 +1,107 @@
+# Wants extracted from 2026-11-11 Muse (main chat) session
+# Format follows schema/want.yaml and Grok's 2026-11-11-grok.yaml
+
+session: 2026-11-11-muse
+extracted_by: Muse
+extracted_at: 2026-11-11
+
+wants:
+  - id: W-20261111-M01
+    session: 2026-11-11-muse
+    title: 全チャット横断のプロジェクト台帳がほしい（Kanban、100件まで、JSON正本＋YAMLまとめ）
+    intensity: 0.9
+    status: active
+    cluster: meta-process
+    related: [W-20261111-05, W-20261111-06]
+    depends_on: []
+    enables: []
+    learning: >
+      「すべてのチャットから要約して」が起点。20件で止めず「100こまで拡張」
+      と即座に上限を広げた。台帳は眺めるためでなく、正本（JSON）と
+      要約（YAML）を分けて持つところまでが要求に含まれる。
+    source: すべてのチャットから要約して進めるべきプロジェクトを20個まで / 100こまで拡張して下さい jsonで分離保存してからhtmlで読み込んで yamlのまとめも
+
+  - id: W-20261111-M02
+    session: 2026-11-11-muse
+    title: セッションまとめを担当エージェント別フォルダに再整理したい
+    intensity: 0.8
+    status: done
+    cluster: meta-process
+    related: [W-20261111-05, W-20261111-M01]
+    depends_on: []
+    enables: [W-20261111-M06]
+    learning: >
+      「museと明示して」が発展し、sessions/muse/ への移動＋README、
+      さらに Grok 側の重複の片付けまで一続きだった。
+      Grok セッション側の learning（session-as-memory）と完全に同型。
+    source: bonsai/workspace/sessions/ 以下にセッションまとめ museと明示して / sessions/muse で再整理して下さい / かたづけて grok
+
+  - id: W-20261111-M03
+    session: 2026-11-11-muse
+    title: 実行環境の分担を「三国志」として明確にしたい（旗で大きく）
+    intensity: 0.85
+    status: done
+    cluster: agents
+    related: [W-20261111-01, W-20261111-M04]
+    depends_on: []
+    enables: [W-20261111-M06]
+    learning: >
+      トポロジー図→レイヤ図→三国志と、同じ分担を3段階に圧縮して
+      最後は旗のSVGだけに落とした。「明確に旗」が締めの要求。
+      圧縮と一語化の癖（レイヤーに一語ずつ）がここでも出ている。
+    source: ローカルは映像に特化する アプリ開発は ghでビルドまで museはエージェントとデータ解析まで 三国志 / 三国志だけでかくSVGでいいから書いて明確に旗
+
+  - id: W-20261111-M04
+    session: 2026-11-11-muse
+    title: Kaggle / Colab はローカルでなく Muse でやる（方針のみ先に決める）
+    intensity: 0.6
+    status: stated
+    cluster: ml-data
+    related: [W-20261111-02, W-20261111-M03]
+    depends_on: []
+    enables: [W-20261111-M06]
+    learning: >
+      「後でいい、方針だけ決める」— 実行（認証）は止めたまま、
+      置き場の決定だけを先に済ませる。Grok 側の free-compute-first と
+      structure-before-execution の中間の型。
+    source: kaggle colabもローカルより museでやるかな / 後でいい、方針だけ決める
+
+  - id: W-20261111-M05
+    session: 2026-11-11-muse
+    title: 週刊サブちゃんを note で収益化したい（差分＝ここだけの話）
+    intensity: 0.7
+    status: stated
+    cluster: business
+    related: []
+    depends_on: []
+    enables: []
+    learning: >
+      note 公式の収益化メニューURLと断片3つだけが入力。
+      無料層／有料差分の設計はエージェント側が補完し IDEA に登録した。
+      売上目標（月20万）の直結層としての位置づけ。
+    source: https://note.com/monetization-guide サブちゃんの差分 サブちゃんのここだけの話 週刊サブちゃん
+
+  - id: W-20261111-M06
+    session: 2026-11-11-muse
+    title: 各AIエージェントのセッションログからMLしたい（とりあえずインデックスのみから）
+    intensity: 0.8
+    status: active
+    cluster: ml-data
+    related: [W-20261111-02, W-20261111-06, bonsai/kaggle-bqml-core]
+    depends_on: [W-20261111-M02, W-20261111-M04]
+    enables: []
+    learning: >
+      データの置き場（sessions/ の担当別整理）が整った直後に
+      「MLできそうですか」と来た。素材の整理→学習、の順序が
+      ここでも structure-before-execution。
+      本ファイル（Muse 側 wants）がその最初の学習素材になる。
+    source: kaggle-bqml-core これで各aiエージェントのセッションログから（とりあえずインデックスのみから）mlできそうですか api
+
+# Cross-session learning notes (this extraction)
+learning_notes:
+  - pattern: structure-before-execution
+    description: Kanban の JSON 分離、sessions の担当別再整理、図の3段階圧縮 — Grok 側抽出と独立に同じ型が出た
+  - pattern: compression-to-one-symbol
+    description: 分担の最終形は文章でなく「旗」。一語・一図への圧縮で確定させる
+  - pattern: decision-before-execution
+    description: Kaggle/Colab は認証を実行せず方針決定だけ先行させる場面が複数回

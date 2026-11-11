@@ -1,0 +1,16 @@
+{"session_file_id": "shared/INDEX.md", "agent": "shared", "date": null, "filename": "INDEX.md", "kind": "index", "source_path": "sessions/INDEX.md"}
+{"session_file_id": "shared/README.md", "agent": "shared", "date": null, "filename": "README.md", "kind": "index", "source_path": "sessions/README.md"}
+{"session_file_id": "chatgpt/README.md", "agent": "chatgpt", "date": null, "filename": "README.md", "kind": "index", "source_path": "sessions/chatgpt/README.md"}
+{"session_file_id": "chatgpt/issues.md", "agent": "chatgpt", "date": null, "filename": "issues.md", "kind": "other", "source_path": "sessions/chatgpt/issues.md"}
+{"session_file_id": "chatgpt/kanban.html", "agent": "chatgpt", "date": null, "filename": "kanban.html", "kind": "data", "source_path": "sessions/chatgpt/kanban.html"}
+{"session_file_id": "chatgpt/kanban.json", "agent": "chatgpt", "date": null, "filename": "kanban.json", "kind": "data", "source_path": "sessions/chatgpt/kanban.json"}
+{"session_file_id": "grok/2026-11-11_bqml-kaggle-next-work.md", "agent": "grok", "date": "2026-11-11", "filename": "2026-11-11_bqml-kaggle-next-work.md", "kind": "other", "source_path": "sessions/grok/2026-11-11_bqml-kaggle-next-work.md"}
+{"session_file_id": "grok/2026-11-11_muse-agents-and-kaggle-ml-analysis.md", "agent": "grok", "date": "2026-11-11", "filename": "2026-11-11_muse-agents-and-kaggle-ml-analysis.md", "kind": "other", "source_path": "sessions/grok/2026-11-11_muse-agents-and-kaggle-ml-analysis.md"}
+{"session_file_id": "grok/2026-11-11_session.md", "agent": "grok", "date": "2026-11-11", "filename": "2026-11-11_session.md", "kind": "summary", "source_path": "sessions/grok/2026-11-11_session.md"}
+{"session_file_id": "grok/2026-11-11_topics.md", "agent": "grok", "date": "2026-11-11", "filename": "2026-11-11_topics.md", "kind": "topics", "source_path": "sessions/grok/2026-11-11_topics.md"}
+{"session_file_id": "grok/2026-11-11_wants-structured.md", "agent": "grok", "date": "2026-11-11", "filename": "2026-11-11_wants-structured.md", "kind": "wants", "source_path": "sessions/grok/2026-11-11_wants-structured.md"}
+{"session_file_id": "grok/INDEX.md", "agent": "grok", "date": null, "filename": "INDEX.md", "kind": "index", "source_path": "sessions/grok/INDEX.md"}
+{"session_file_id": "grok/README.md", "agent": "grok", "date": null, "filename": "README.md", "kind": "index", "source_path": "sessions/grok/README.md"}
+{"session_file_id": "grok/past-intents.md", "agent": "grok", "date": null, "filename": "past-intents.md", "kind": "other", "source_path": "sessions/grok/past-intents.md"}
+{"session_file_id": "muse/2026-11-11_muse-session-summary.md", "agent": "muse", "date": "2026-11-11", "filename": "2026-11-11_muse-session-summary.md", "kind": "summary", "source_path": "sessions/muse/2026-11-11_muse-session-summary.md"}
+{"session_file_id": "muse/README.md", "agent": "muse", "date": null, "filename": "README.md", "kind": "index", "source_path": "sessions/muse/README.md"}
