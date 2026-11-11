@@ -1,26 +1,34 @@
 # ml-sessions-intent
 
-ML session intents & structured wants.
+Session → Want → Intent → SQLite の薄いハブ。
 
-**Author note**: Scaffold + extractions by Grok / Muse — 2026-11-11
-
----
-
-## Task board
-
-→ **[TASKS.md](./TASKS.md)**（Doing / Planned / 依存 / 着手順）
+**Pipeline**: [docs/pipeline.md](./docs/pipeline.md)  
+**Tasks**: [TASKS.md](./TASKS.md)
 
 ---
 
-## Two layers
+## Quick run
+
+```bash
+pip install -e ".[dev]"
+python -m ml_sessions_intent.pipeline
+# → data/bronze/*.jsonl + data/canonical/ml_sessions.db
+```
+
+```bash
+python -m ml_sessions_intent.pipeline --sessions-dir ../workspace/sessions
+```
+
+---
+
+## Layers
 
 | Layer | Path | Role |
 |-------|------|------|
-| **Want** | `wants/` | Session-extracted やりたいこと（濃さ / 関連 / 依存 / 学習） |
-| **Intent** | `intents/` | Experiment-sized unit（goal → next_action → artifacts） |
-| **Bronze** | `data/bronze/` | JSONL derived from YAML（EDA / baseline 用） |
-
-Want が先 → Intent に落とす、という流れ。
+| Want YAML | `wants/` | セッションから拾ったやりたいこと |
+| Intent YAML | `intents/` | 実験単位 |
+| Bronze | `data/bronze/` | JSONL（EDA） |
+| Canonical DB | `data/canonical/ml_sessions.db` | SQLite（gitignore） |
 
 ---
 
@@ -28,20 +36,7 @@ Want が先 → Intent に落とす、という流れ。
 
 | ID | Title | Status |
 |----|-------|--------|
-| INTENT-01 | BQML-style GH metadata baseline on Kaggle | planned |
-| INTENT-02 | ml-repos-analyze 計算コア移植 | **doing** |
-| INTENT-03 | Session-wants baseline（title→cluster） | planned |
-
----
-
-## Layout
-
-```
-intents/
-wants/
-data/bronze/
-schema/
-src/ml_sessions_intent/
-notebooks/
-TASKS.md
-```
+| INTENT-04 | Session→Intent 自動化 + DB | **doing** |
+| INTENT-02 | ml-repos-analyze 移植 | doing |
+| INTENT-01 | BQML GH metadata baseline | planned |
+| INTENT-03 | Session-wants baseline | planned |

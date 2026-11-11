@@ -1,14 +1,11 @@
 data/raw/*
 !data/raw/.gitkeep
+data/canonical/*.db
+data/canonical/*.db-journal
 __pycache__/
 *.py[cod]
-.env
 .venv/
 venv/
 *.egg-info/
-dist/
-build/
 .ipynb_checkpoints/
 .DS_Store
-.idea/
-.vscode/

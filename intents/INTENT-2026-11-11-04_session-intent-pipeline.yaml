@@ -1,0 +1,27 @@
+id: INTENT-2026-11-11-04
+title: Session→Intent の構造化・自動化と DB 登録
+goal: >
+  セッションから want / intent を整理する流れをパイプライン化し、
+  bronze JSONL 経由で SQLite に冪等登録できるようにする。
+status: doing
+priority: P0
+source_session: 2026-11-11 Grok (this request)
+related_wants:
+  - W-20261111-05
+  - W-20261111-06
+related_repos:
+  - bonsai/ml-sessions-intent
+  - bonsai/workspace
+next_action: >
+  1. python -m ml_sessions_intent.pipeline をローカルまたは CI で実行
+  2. data/bronze/intents.jsonl と wants.jsonl を確認
+  3. data/canonical/ml_sessions.db に sessions/wants/intents が入っていることを確認
+  4. （任意）--sessions-dir で workspace/sessions を渡して sessions テーブルも埋める
+artifacts:
+  - docs/pipeline.md
+  - src/ml_sessions_intent/pipeline.py
+  - src/ml_sessions_intent/db.py
+  - src/ml_sessions_intent/extract_intents.py
+notes: >
+  Canonical = YAML + SQLite。Bronze = JSONL。
+  セッション本文はまだ読まない（index + 構造化フィールドのみ）。
