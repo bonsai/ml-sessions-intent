@@ -1,0 +1,18 @@
+id: INTENT-2026-11-11-01
+title: BQML-style GH metadata baseline on Kaggle
+goal: >
+  Reproduce a minimal time-to-close (or similar) prediction on Kaggle
+  using the kaggle-bqml-core foundation, starting from session analysis.
+status: planned
+priority: P1
+source_session: bonsai/workspace/sessions/grok/2026-11-11_bqml-kaggle-next-work.md
+related_kb:
+  - KB-009
+  - KB-010
+  - KB-057
+next_action: >
+  Put a small sample bronze JSONL into kaggle-bqml-core and run
+  notebooks/01_eda_baseline.ipynb with a sklearn baseline.
+artifacts: []
+notes: >
+  Canonical stays local (.db / JSONL). BQ is later. D1 not used.

@@ -1,0 +1,37 @@
+# Intent schema for ml-sessions-intent
+version: 0.1.0
+
+intent:
+  required:
+    - id
+    - title
+    - goal
+    - status
+  properties:
+    id:
+      type: string
+      description: Unique id (e.g. INTENT-2026-11-11-01)
+    title:
+      type: string
+    goal:
+      type: string
+      description: What success looks like
+    status:
+      type: string
+      enum: [idea, planned, doing, blocked, done, dropped]
+    priority:
+      type: string
+      enum: [P0, P1, P2, P3]
+    source_session:
+      type: string
+      description: Link or path to the originating session log
+    related_kb:
+      type: string[]
+      description: Kanban / KB ids (e.g. KB-009)
+    next_action:
+      type: string
+    artifacts:
+      type: string[]
+      description: Notebooks, models, datasets produced
+    notes:
+      type: string
